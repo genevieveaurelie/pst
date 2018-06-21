@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {AngularFireDatabase} from 'angularfire2/database';
 /**
  * Generated class for the ListEventsPage page.
  *
@@ -15,7 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ListEventsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+  incident;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  public afd : AngularFireDatabase) {
+
+  }
+
+ 
+  addData(){
+    this.afd.list('Incident rencontré/').push(this.incident)
   }
 
   ionViewDidLoad() {
